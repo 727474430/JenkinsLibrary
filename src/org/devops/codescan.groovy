@@ -8,11 +8,16 @@ package org.devops
    ##################################################
 */
 
-def SonarScanner(projectKey, projectVersion, javaVersion, modules) {
+def SonarScan(projectKey, projectVersion, javaVersion, modules) {
     try {
         def SONAR_HOME = tool "SonarScanner"
         withSonarQubeEnv("Sonar") {
-            sh """${SONAR_HOME}/bin/sonar-scanner -Dsonar.projectKey=${projectKey} -Dsonar.projectName=${projectKey} -Dsonar.projectVersion=${projectVersion} -Dsonar.language=java -Dsonar.sourceEncoding=UTF-8 -Dsonar.java.source=${javaVersion} -Dsonar.sources=src/main/java -Dsonar.java.binaries=target/classes -Dsonar.modules=${modules} -X"""
+            sh """
+                ${SONAR_HOME}/bin/sonar-scanner -Dsonar.projectKey=${projectKey} -Dsonar.projectName=${projectKey} 
+                -Dsonar.projectVersion=${projectVersion} -Dsonar.language=java -Dsonar.sourceEncoding=UTF-8 
+                -Dsonar.java.source=${javaVersion} -Dsonar.sources=src/main/java -Dsonar.java.binaries=target/classes 
+                -Dsonar.modules=${modules} -X
+            """
         }
         sleep(20)
         def qg = waitForQualityGate()
