@@ -8,6 +8,7 @@ package org.devops
    ##################################################
 */
 
+// SonarQube code scanner
 def SonarScan(projectKey, projectVersion, javaVersion, modules) {
     try {
         def SONAR_HOME = tool "SonarScanner"
