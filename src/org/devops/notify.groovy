@@ -63,7 +63,7 @@ def getChangeString() {
             def commitMsg = formatCommitMsg(entry.msg)
             def commitTime = formatTimestamp(entry.timestamp)
             def commitAuthor = entry.author
-            changeString += " >- ${commitMsg} [${commitAuthor} ${commitTime}] \n"
+            changeLogging += " >- ${commitMsg} [${commitAuthor} ${commitTime}] \n"
         }
     }
     if (!changeLogging) {
