@@ -42,6 +42,7 @@ pipeline {
         success {
             script {
                 logger.Info("Pipeline job execution success!")
+                currentBuild.description = "Jenkins job 执行成功！"
                 notify.DingTalkNotify("55727fca73f341830a5d2cce86897edc10146ac6dc934c936f4ba7821e1540d3", "${JOB_NAME}", "构建成功 ✅", "master")
                 //tool.MailNotify("727474430@qq.com", "${currentBuild.currentResult}")
             }
@@ -49,6 +50,7 @@ pipeline {
         failure {
             script {
                 logger.Error("Pipeline job execution failure!")
+                currentBuild.description = "Jenkins job 执行失败！"
                 notify.DingTalkNotify("55727fca73f341830a5d2cce86897edc10146ac6dc934c936f4ba7821e1540d3", "${JOB_NAME}", "构建失败 ❌", "master")
                 //tool.MailNotify("727474430@qq.com", "${currentBuild.currentResult}")
             }
