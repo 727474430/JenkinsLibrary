@@ -60,6 +60,7 @@ def getChangeString() {
             def commitAuthor = entry.author
             def commitMsg = formatCommitMsg(entry.msg)
             def commitTime = formatTimestamp(entry.timestamp)
+            echo "commitAuthor -> ${commitAuthor};  commitMsg -> ${commitMsg};  commitTime -> ${commitTime}"
             changeLogging += combinationChangeLogging(commitMsg, commitTime, commitAuthor)
         }
     }
