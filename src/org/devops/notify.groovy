@@ -70,16 +70,16 @@ def getChangeString() {
 }
 
 def formatTimestamp(timestamp) {
-    return new Date(timestamp).format("yyyy-MM-dd HH:mm:ss")
+    return (new Date(timestamp).format("yyyy-MM-dd HH:mm:ss"))
 }
 
 def formatCommitMsg(message) {
     if (message.length() > 18) {
-        return message.take(18) + "..."
+        return (message.take(18) + "...")
     }
-    return message
+    return (message)
 }
 
 def combinationChangeLogging(commitMsg, commitTime, commitAuthor) {
-    return " >- ${commitMsg} [${commitAuthor} ${commitTime}] \n"
+    return (" >- ${commitMsg} [${commitAuthor} ${commitTime}] \n")
 }
