@@ -55,7 +55,7 @@ def MailNotify(to, status) {
 def getChangeString() {
     def changeLogging = ""
     echo "================${currentBuild.changeSets}==========="
-    currentBuild.changeSets.forEach { entries ->
+    currentBuild.changeSets.each { entries ->
         entries.each { entry ->
             commitAuthor = entry.author
             commitMsg = formatCommitMsg(entry.msg)
