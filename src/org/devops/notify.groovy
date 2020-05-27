@@ -52,19 +52,19 @@ def MailNotify(to, status) {
 }
 
 // Get commit log
+@NonCPS
 def getChangeString() {
     def changeLogging = ""
-    echo "================${currentBuild.changeSets}==========="
     currentBuild.changeSets.each { entries ->
         entries.each { entry ->
-            commitAuthor = entry.author
-            commitMsg = formatCommitMsg(entry.msg)
-            commitTime = formatTimestamp(entry.timestamp)
+            def commitAuthor = entry.author
+            def commitMsg = formatCommitMsg(entry.msg)
+            def commitTime = formatTimestamp(entry.timestamp)
             changeLogging += combinationChangeLogging(commitMsg, commitTime, commitAuthor)
         }
     }
     if (!changeLogging) {
-        changeLogging = "- No new changes"
+        changeLogging = " - No new changes"
     }
     return (changeLogging)
 }
@@ -81,5 +81,5 @@ def formatCommitMsg(message) {
 }
 
 def combinationChangeLogging(commitMsg, commitTime, commitAuthor) {
-    ">- ${commitMsg} [${commitAuthor} ${commitTime}] \n"
+    return " >- ${commitMsg} [${commitAuthor} ${commitTime}] \n"
 }
