@@ -55,12 +55,13 @@ def MailNotify(to, status) {
 @NonCPS
 def getChangeString() {
     def changeLogging = ""
-    currentBuild.changeSets.each { entries ->
+    def changeLogSets = currentBuild.changeSets
+    changeLogSets.each {
+        def entries = it
         entries.each { entry ->
             def commitAuthor = entry.author
             def commitMsg = formatCommitMsg(entry.msg)
             def commitTime = formatTimestamp(entry.timestamp)
-            echo "commitAuthor -> ${commitAuthor};  commitMsg -> ${commitMsg};  commitTime -> ${commitTime}"
             changeLogging += combinationChangeLogging(commitMsg, commitTime, commitAuthor)
         }
     }
