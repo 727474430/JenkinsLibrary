@@ -56,9 +56,16 @@ def MailNotify(to, status) {
 def getChangeString() {
     def changeLogging = ""
     def changeLogSets = currentBuild.changeSets
-    changeLogSets.each {
-        def entries = it
-        entries.each { entry ->
+    for (int i = 0; i < changeLogSets.size(); i++) {
+        def entries = changeLogSets[i].items
+        for (int j = 0; j < entries.length; j++) {
+            def entry = entries[j]
+//            def commit_msg = entry.msg.take(MAX_MSG_LEN)
+//            def commit_id = entry.commitId
+//            def commit_time = entry.timestamp
+//            def commit_author = entry.author
+//            changeString += "\n----author: ${commit_author},commit id: ${commit_id},commit message: ${commit_msg}\n"
+
             def commitAuthor = entry.author
             def commitMsg = formatCommitMsg(entry.msg)
             def commitTime = formatTimestamp(entry.timestamp)
