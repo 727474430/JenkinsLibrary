@@ -60,10 +60,11 @@ def getChangeString() {
         def entries = changeLogSets[i].items
         for (int j = 0; j < entries.length; j++) {
             def entry = entries[j]
-            def commitMsg = formatCommitMsg(entry.msg)
-            def commitTime = formatTimestamp(entry.timestamp)
-            def commitAuthor = entry.author
-            changeLogging += " >- ${commitMsg} [${commitAuthor} ${commitTime}] \n"
+            def commit_msg = entry.msg.take(MAX_MSG_LEN)
+            def commit_id = entry.commitId
+            def commit_time = entry.timestamp
+            def commit_author = entry.author
+            changeLogging += "\n----author: ${commit_author},commit id: ${commit_id},commit message: ${commit_msg}\n"
         }
     }
     if (!changeLogging) {
