@@ -1,5 +1,7 @@
 package org.devops
 
+import org.apache.tools.ant.types.resources.selectors.Date
+
 /*
    ##################################################
    #                                                #
@@ -51,20 +53,32 @@ def MailNotify(to, status) {
 
 // Get commit log
 def getChangeString() {
-    def changeString = ""
-    def MAX_MSG_LEN = 20
-    def changeLogSets = currentBuild.changeSets
-    for (int i = 0; i < changeLogSets.size(); i++) {
-        def entries = changeLogSets[i].items
-        for (int j = 0; j < entries.length; j++) {
-            def entry = entries[j]
-            truncatedMsg = entry.msg.take(MAX_MSG_LEN)
-            commitTime = new Date(entry.timestamp).format("yyyy-MM-dd HH:mm:ss")
-            changeString += " >- ${truncatedMsg} [${entry.author} ${commitTime}]\n"
+    def changeLogging = ""
+    currentBuild.changeSets.forEach { entries ->
+        entries.each { entry ->
+            commitAuthor = entry.author
+            commitMsg = formatCommitMsg(entry.msg)
+            commitTime = formatTimestamp(entry.timestamp)
+            changeLogging += combinationChangeLogging(commitMsg, commitTime, commitAuthor)
         }
     }
-    if (!changeString) {
-        changeString = " - No new changes"
+    if (!changeLogging) {
+        changeLogging = "- No new changes"
     }
-    return (changeString)
+    return (changeLogging)
+}
+
+def formatTimestamp(timestamp) {
+    return new Date(timestamp).format("yyyy-MM-dd HH:mm:ss")
+}
+
+def formatCommitMsg(message) {
+    if (message.length() > 18) {
+        return message.take(18) + "..."
+    }
+    return message
+}
+
+def combinationChangeLogging(commitMsg, commitTime, commitAuthor) {
+    ">- ${commitMsg} [${commitAuthor} ${commitTime}] \n"
 }
