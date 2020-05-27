@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b95adf5-cc67-4fbb-a8c7-107f4ed1d809" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/devops/codescan.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/devops/codescan.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vars/say.groovy" beforeDir="false" />
-    </list>
+    <list default="true" id="7b95adf5-cc67-4fbb-a8c7-107f4ed1d809" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +37,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="com.alibabacloud.intellij.config.RegionConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SshConsoleOptionsProvider">
     <option name="myEncoding" value="UTF-8" />
@@ -62,7 +57,8 @@
       <workItem from="1590454835843" duration="36000" />
       <workItem from="1590454898789" duration="346000" />
       <workItem from="1590455270418" duration="207000" />
-      <workItem from="1590457180334" duration="12795000" />
+      <workItem from="1590457180334" duration="19773000" />
+      <workItem from="1590548483797" duration="1149000" />
     </task>
     <servers />
   </component>
@@ -84,13 +80,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="412" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590398328537" />
+    <state x="427" y="102" key="SettingsEditor" timestamp="1590548426271">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="427" y="102" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590548426271" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1590457561507">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590457561507" />
-    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1590479499982">
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1590483157924">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590479499982" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590483157924" />
   </component>
 </project>
