@@ -52,38 +52,21 @@ def MailNotify(to, status) {
 }
 
 // Get commit log
-@NonCPS
 def getChangeString() {
-    def changeLogging = ""
+    def changeString = ""
+    def MAX_MSG_LEN = 20
     def changeLogSets = currentBuild.changeSets
     for (int i = 0; i < changeLogSets.size(); i++) {
         def entries = changeLogSets[i].items
         for (int j = 0; j < entries.length; j++) {
             def entry = entries[j]
-            def commit_msg = entry.msg.take(MAX_MSG_LEN)
-            def commit_id = entry.commitId
-            def commit_time = entry.timestamp
-            def commit_author = entry.author
-            changeLogging += "\n----author: ${commit_author},commit id: ${commit_id},commit message: ${commit_msg}\n"
+            truncatedMsg = entry.msg.take(MAX_MSG_LEN)
+            commitTime = new Date(entry.timestamp).format("yyyy-MM-dd HH:mm:ss")
+            changeString += " >- ${truncatedMsg} [${entry.author} ${commitTime}]\n"
         }
     }
-    if (!changeLogging) {
-        changeLogging = " - No new changes"
+    if (!changeString) {
+        changeString = " - No new changes"
     }
-    return (changeLogging)
-}
-
-def formatTimestamp(timestamp) {
-    return (new Date(timestamp).format("yyyy-MM-dd HH:mm:ss"))
-}
-
-def formatCommitMsg(message) {
-    if (message.length() > 18) {
-        return (message.take(18) + "...")
-    }
-    return (message)
-}
-
-def combinationChangeLogging(commitMsg, commitTime, commitAuthor) {
-    return (" >- ${commitMsg} [${commitAuthor} ${commitTime}] \n")
+    return (changeString)
 }

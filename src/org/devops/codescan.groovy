@@ -18,6 +18,7 @@ def SonarScan(projectKey, projectVersion, javaVersion, modules) {
         sleep(20)
         def qg = waitForQualityGate()
         if (qg.status != 'OK') {
+            currentBuild.description = "代码扫描失败！"
             error "未通过SonarQube代码扫描，请及时修改!"
         }
     } catch (e) {
