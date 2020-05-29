@@ -21,7 +21,7 @@ def Info(message) {
 
 // Warning log
 def Warning(message) {
-    def colorMsg = "\\033[1;35m >>>>>>>>>>>>>>${message}<<<<<<<<<<<<<<"
+    def colorMsg = "\033[1;35m >>>>>>>>>>>>>>${message}<<<<<<<<<<<<<<"
     ansiColor('xterm') {
         println(colorMsg)
     }
