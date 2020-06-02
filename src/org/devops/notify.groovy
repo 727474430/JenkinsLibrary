@@ -48,7 +48,7 @@ def QyWxNotify(webhook, jobName, status, version) {
         def data = """{
             "msgtype": "markdown",
             "markdown": {
-                "content": "#监控报警 ### 构建信息\n>- 应用名称: **${jobName}**\n>- 构建结果: **${status}**\n>- 当前版本: **${version}**\n>- 构建发起: **${env.BUILD_USER}**\n>- 持续时间: **${currentBuild.durationString}**\n>- 构建日志: [点击查看详情](${env.BUILD_URL}console)\n#### 更新记录\n ${log}"
+                "content": "### 构建信息\n>- 应用名称: **${jobName}**\n>- 构建结果: **${status}**\n>- 当前版本: **${version}**\n>- 构建发起: **${env.BUILD_USER}**\n>- 持续时间: **${currentBuild.durationString}**\n>- 构建日志: [点击查看详情](${env.BUILD_URL}console)\n#### 更新记录\n ${log}"
             }
         }"""
 
@@ -88,7 +88,7 @@ def getChangeString() {
         }
     }
     if (!changeString) {
-        changeString = " - No new changes"
+        changeString = " >- No new changes"
     }
     return (changeString)
 }
