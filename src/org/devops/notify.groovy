@@ -40,6 +40,30 @@ def DingTalkNotify(webhook, jobName, status, version) {
     }
 }
 
+// Company Wx complete notification
+def QyWxNotify(webhook, jobName, status, version) {
+    wrap([$class: 'BuildUser']) {
+        def url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${webhook}"
+        def log = getChangeString()
+        def data = """{
+            "msgtype": "markdown",
+            "markdown": {
+                "content": "#监控报警 ### 构建信息\n>- 应用名称: **${jobName}**\n>- 构建结果: **${status}**\n>- 当前版本: **${version}**\n>- 构建发起: **${env.BUILD_USER}**\n>- 持续时间: **${currentBuild.durationString}**\n>- 构建日志: [点击查看详情](${env.BUILD_URL}console)\n#### 更新记录\n ${log}"
+            }
+        }"""
+
+        httpRequest acceptType: 'APPLICATION_JSON_UTF8',
+                consoleLogResponseBody: false,
+                contentType: 'APPLICATION_JSON_UTF8',
+                httpMode: 'POST',
+                ignoreSslErrors: true,
+                requestBody: data,
+                responseHandle: 'NONE',
+                url: "${url}",
+                quiet: true
+    }
+}
+
 // Email job complete notification
 def MailNotify(to, status) {
     wrap([$class: 'BuildUser']) {
