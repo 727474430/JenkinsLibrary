@@ -33,3 +33,7 @@ Code build.
 Code checkout.
 
   - Java code checkout. supports **git** and **svn**.
+  
+Code deploy.
+
+  - Java code deploy. supports **script** and **command**.
