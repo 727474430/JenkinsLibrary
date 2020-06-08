@@ -8,6 +8,7 @@ package org.devops
    ##################################################
 */
 
+// Deploy app. Command execute on remote server
 def Deploy(ips, serverId, command) {
     for (item in ips.tokenize(',')) {
         def server = findServer(item, serverId)
@@ -15,6 +16,7 @@ def Deploy(ips, serverId, command) {
     }
 }
 
+// Script execute on remote server
 def Script(ips, serverId, script) {
     for (item in ips.tokenize(',')) {
         def server = findServer(item, serverId)
@@ -22,6 +24,7 @@ def Script(ips, serverId, script) {
     }
 }
 
+// File copy from local path to remote server path
 def CopyFile(ips, serverId, fromPath, toPath) {
     for (item in ips.tokenize(',')) {
         def server = findServer(item, serverId)
@@ -29,6 +32,7 @@ def CopyFile(ips, serverId, fromPath, toPath) {
     }
 }
 
+// File get from local path to remote server path. if the file exists then override old file
 def GetFile(ips, serverId, fromPath, toPath) {
     for (item in ips.tokenize(',')) {
         def server = findServer(item, serverId)
@@ -36,6 +40,7 @@ def GetFile(ips, serverId, fromPath, toPath) {
     }
 }
 
+// Remove file on remote server
 def RemoveFile(ips, serverId, path) {
     for (item in ips.tokenize(',')) {
         def server = findServer(item, serverId)
@@ -43,6 +48,7 @@ def RemoveFile(ips, serverId, path) {
     }
 }
 
+// Write file to local
 def WriteFile(fileName, fileContent) {
     writeFile file: "${fileName}", text: "${fileContent}"
 }
