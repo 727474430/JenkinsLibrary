@@ -9,7 +9,7 @@ package org.devops
 */
 
 // Checkout code from scm
-def Checkout(scmType, url, branchName, credentialsId) {
+def Checkout(scmType, url, credentialsId, branchName = "master") {
     if (scmType == "svn") {
         checkout([$class                : 'SubversionSCM',
                   additionalCredentials : [],
